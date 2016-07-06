@@ -5,10 +5,10 @@
 # Copyright: (c) 2016<smileboywtu@gmail.com>
 
 # proxy timeout
-PROXY_TIMEOUT = 5
+PROXY_TIMEOUT = 3
 
 # official index url
-OFFICIAL_URL = 'http://jandan.net/'
+OFFICIAL_URL = 'https://www.baidu.com/'
 
 # default scrape url
 URL_TEMPLATE = 'http://jandan.net/ooxx/page-$num#comments'

@@ -12,6 +12,9 @@ from lxml import html
 from utils import proxy
 from config import globalconstants as constants
 
+import gevent.monkey
+gevent.monkey.patch_socket()
+
 
 class ProxyRobot(object):
     """auto scrape proxy from web"""
@@ -21,7 +24,7 @@ class ProxyRobot(object):
         init the robot
         """
         self.handlers = [
-            ('http://www.xicidaili.com/nn/', self._get_xici_proxy),
+            ('http://www.xicidaili.com/nt/', self._get_xici_proxy),
         ]
 
 
@@ -83,8 +86,7 @@ class ProxyPool(object):
     @property
     def proxies(self):
         """get all proxy list"""
-        proxies = map(proxy.construct_proxy, self._proxies)
-        return proxies
+        return map(proxy.construct_proxy, self._proxies)
 
     def update_proxy(self):
         """update proxies"""
@@ -96,18 +98,16 @@ class ProxyPool(object):
 
         proxy_handler = urllib2.ProxyHandler(proxy)
         opener = urllib2.build_opener(proxy_handler)
-        urllib2.install_opener(opener)
-
-        req = urllib2.Request(constants.OFFICIAL_URL, headers={'User-Agent': random.choice(constants.USER_AGENTS)})
-        resp = urllib2.urlopen(req, timeout=constants.PROXY_TIMEOUT)
-        if resp.getcode() == 200:
-            return True
-        return False
-
+        opener.addheaders = [('User-Agent',  random.choice(constants.USER_AGENTS))]
+        try:
+            resp = opener.open(constants.OFFICIAL_URL, timeout=constants.PROXY_TIMEOUT)
+            return resp.getcode() == 200
+        except urllib2.URLError:
+            return False
 
 
 if __name__ == '__main__':
     pool = ProxyPool()
     print pool.proxy
-    #print pool.proxies
-
+    print pool.proxy
+    print pool.proxy

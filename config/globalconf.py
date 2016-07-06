@@ -5,11 +5,18 @@
 # Copyright: (c) 2016<smileboywtu@gmail.com>
 
 
+import os
+
+HOME = os.environ['HOME']
+
 # set the image save directory
-IMAGE_FILE_DIR = 'e:/images'
+IMAGE_FILE_DIR = os.path.join(HOME, 'images')
 
 # set the request config
 REQ_TIMEOUT = 15
 
-START_PAGE = 1000 # when set this you should go to jiandan.com to see the max tab value
-PAGE_DELTA = 3
+START_PAGE = 500 # when set this you should go to jiandan.com to see the max tab value
+PAGE_DELTA = 10
+
+# set jiandan http concurrent load
+HTTP_CONCURRENT_LOAD = 1000 # no more than 1024

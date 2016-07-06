@@ -17,10 +17,31 @@ from string import Template
 from config import globalconf as conf
 from config import globalconstants as constants
 
+from freeproxy import autoproxy
+
 import gevent
 # use gevent socket
 import gevent.monkey
 gevent.monkey.patch_all()
+
+
+def set_proxy_openner(http_proxy):
+    """
+    set the global urllib2 proxy opener
+    :param http_proxy: http proxy
+    :return: None
+    """
+    proxy_handler = urllib2.ProxyHandler(proxies=http_proxy)
+    opener = urllib2.build_opener(proxy_handler)
+    urllib2.install_opener(opener)
+
+def setup_proxy():
+    """
+    setup global proxy
+    :return:
+    """
+    proxy_pool = autoproxy.ProxyPool()
+    set_proxy_openner(proxy_pool.proxy)
 
 
 def construct_req(url):
@@ -90,6 +111,10 @@ def download_image(urls):
     """
     counter = 0
 
+    # check dir
+    if not os.path.isdir(conf.IMAGE_FILE_DIR):
+        os.mkdir(conf.IMAGE_FILE_DIR)
+
     def _download(url):
         req = construct_req(url)
         resp = urllib2.urlopen(req, timeout=conf.REQ_TIMEOUT)
@@ -133,10 +158,14 @@ def main():
     :return: None
     """
     args = command_line()
-    start = args.get('start', conf.START_PAGE)
-    delta = args.get('delta', conf.PAGE_DELTA)
+    start = args.start or conf.START_PAGE
+    delta = args.delta or conf.PAGE_DELTA
 
+    #setup_proxy()
+    print 'setup proxy ok...'
     urls = generate_url(constants.URL_TEMPLATE, (start, delta))
+    print 'scrape page urls: '
+    pprint.pprint(urls)
     images = get_image_url(urls)
 
     print '%d images will be download. they are: ' % len(images)

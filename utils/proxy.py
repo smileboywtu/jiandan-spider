@@ -5,6 +5,11 @@
 # Copyright: (c) 2016<smileboywtu@gmail.com>
 
 
+import urllib2
+import gevent.monkey
+gevent.monkey.patch_all()
+
+
 def construct_proxy(proxy):
     """
     construct proxy

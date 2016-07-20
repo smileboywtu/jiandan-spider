@@ -18,6 +18,7 @@ from config import globalconf as conf
 from config import globalconstants as constants
 
 from freeproxy import autoproxy
+from executor.http_pool import HttpPool
 
 import gevent
 # use gevent socket
@@ -34,6 +35,7 @@ def set_proxy_openner(http_proxy):
     proxy_handler = urllib2.ProxyHandler(proxies=http_proxy)
     opener = urllib2.build_opener(proxy_handler)
     urllib2.install_opener(opener)
+
 
 def setup_proxy():
     """
@@ -78,13 +80,9 @@ def get_image_url(urls):
     :param urls: page source url
     :return: image urls
     """
-    jobs = [gevent.spawn(scrape_image, url) for url in urls]
-    gevent.joinall(jobs)
-
-    images = []
-    for job in jobs:
-        job.value and images.extend(job.value)
-    # return none duplicate item
+    executor = HttpPool(conf.HTTP_CONCURRENT_LOAD, scrape_image)
+    executor.add_tasks(urls)
+    images = executor.run()
     return list(set(images))
 
 
@@ -127,14 +125,14 @@ def download_image(urls):
             return 1
         return 0
 
-    jobs = [gevent.spawn(_download, url) for url in urls]
-    gevent.joinall(jobs)
-
-    for job in jobs:
-        try:
-            counter += job.value
-        except TypeError:
-            pass
+    executor = HttpPool(conf.HTTP_CONCURRENT_LOAD, runner=_download)
+    executor.add_tasks(urls)
+    resp = executor.run()
+    for val in resp:
+         try:
+             counter += val
+         except TypeError:
+             pass
     print 'image download process done, %d images downloaded and saved to %s' % (counter, conf.IMAGE_FILE_DIR)
 
 
@@ -161,8 +159,9 @@ def main():
     start = args.start or conf.START_PAGE
     delta = args.delta or conf.PAGE_DELTA
 
-    #setup_proxy()
-    print 'setup proxy ok...'
+    if conf.AUTO_PROXY:
+        setup_proxy()
+        print 'setup proxy ok...'
     urls = generate_url(constants.URL_TEMPLATE, (start, delta))
     print 'scrape page urls: '
     pprint.pprint(urls)

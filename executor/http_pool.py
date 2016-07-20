@@ -7,6 +7,7 @@
 
 import gevent
 import gevent.monkey
+from gevent import Greenlet
 from gevent.lock import RLock
 from gevent.queue import Queue
 gevent.monkey.patch_all()
@@ -20,15 +21,18 @@ class HttpPool(object):
 
         :param load: default http request load
         """
-        self.runner = runner
+        self._runner = runner
         self.jobs = []
+        self.jobs_ = []
+        self.result = []
         self.max_requst = load
-        self.lock = RLock()
+        self.lock = RLock()     # 控制写入job_
+        self.lock_ = RLock()    # 控制输出结果
         self.task_queue = Queue()
 
     @property
     def runner(self):
-        return self.runner
+        return self._runner
 
     @runner.setter
     def set_runner(self, runner):
@@ -36,7 +40,7 @@ class HttpPool(object):
 
         :return: None
         """
-        self.runner = runner
+        self._runner = runner
 
     def add_task(self, task):
         """
@@ -54,24 +58,51 @@ class HttpPool(object):
         :param tasks: list of the tasks
         :return: None
         """
-        for task in xrange(tasks):
+        for task in tasks:
             self.add_task(task)
+
+    def _callback(self, job):
+        """
+
+        :return: None
+        """
+        # 获取结果
+        with self.lock_:
+            value = job.value
+            if isinstance(value, list):
+                self.result.extend(value)
+            else:
+                self.result.append(value)
+
+        if not self.task_queue.empty():
+            job = gevent.spawn(self.runner, self.task_queue.get())
+            job.link(self._callback)
+            with self.lock:
+                self.jobs_.append(job)
 
     def run(self):
         """
         start to run the jobs
 
-        :return: None
+        :return: return jobs
         """
         if not self.runner:
             raise ValueError("please setup runner first.")
 
-        while not Queue.empty():
-            with self.lock:
-                if self.max_requst > 0:
-                    job = gevent.spawn(self.runner, self.task_queue.get())
-                    self.jobs.append(job)
-                    self.max_requst -= 1
-                else:
-                    gevent.joinall(self.jobs)
-            gevent.sleep(0.001)
+        http_load = self.max_requst
+        while not self.task_queue.empty():
+            if http_load > 0:
+                job = gevent.spawn(self.runner, self.task_queue.get())
+                job.link(self._callback)
+                self.jobs.append(job)
+                http_load -= 1
+            else:
+                gevent.joinall(self.jobs)
+
+        if http_load > 0:
+            gevent.joinall(self.jobs)
+
+        with self.lock:
+            gevent.joinall(self.jobs_)
+
+        return self.result

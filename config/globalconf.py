@@ -13,10 +13,13 @@ HOME = os.environ['HOME']
 IMAGE_FILE_DIR = os.path.join(HOME, 'images')
 
 # set the request config
-REQ_TIMEOUT = 15
+REQ_TIMEOUT = 25
 
-START_PAGE = 500 # when set this you should go to jiandan.com to see the max tab value
+START_PAGE = 650 # when set this you should go to jiandan.com to see the max tab value
 PAGE_DELTA = 10
 
 # set jiandan http concurrent load
 HTTP_CONCURRENT_LOAD = 1000 # no more than 1024
+
+# auto proxy
+AUTO_PROXY = False

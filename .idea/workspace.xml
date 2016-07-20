@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a5276de8-1325-46bf-97a9-aad59a78f169" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/jiandan-spider.iml" afterPath="$PROJECT_DIR$/.idea/jiandan-spider.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/executor/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/executor/http_pool.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="jiandan-spider.iws" />
@@ -28,29 +28,18 @@
       <file leaf-file-name="spider.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/spider.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3116">
+            <state relative-caret-position="1393">
               <caret line="178" column="0" selection-start-line="178" selection-start-column="0" selection-end-line="178" selection-end-column="0" />
-              <folding>
-                <marker date="1467855598249" expanded="true" signature="0:112" ph="..." />
-                <marker date="1467855598249" expanded="false" signature="115:380" ph="import ..." />
-                <marker date="1467855598249" expanded="true" signature="1198:1543" ph="..." />
-                <marker date="1467855598249" expanded="true" signature="1203:1371" ph="&quot;&quot;&quot;construct scrapy source urls...&quot;&quot;&quot;" />
-                <marker date="1467855598249" expanded="true" signature="1570:1916" ph="..." />
-                <marker date="1467855598249" expanded="true" signature="1575:1683" ph="&quot;&quot;&quot;get image url from the page source...&quot;&quot;&quot;" />
-                <marker date="1467855598249" expanded="true" signature="1941:2262" ph="..." />
-                <marker date="1467855598249" expanded="true" signature="1946:2058" ph="&quot;&quot;&quot;scrapy the image url from the page source...&quot;&quot;&quot;" />
-                <marker date="1467855598249" expanded="true" signature="2290:3221" ph="..." />
-                <marker date="1467855598249" expanded="true" signature="2295:2392" ph="&quot;&quot;&quot;download the image from given urls...&quot;&quot;&quot;" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="autoproxy.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="autoproxy.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/freeproxy/autoproxy.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-507">
-              <caret line="49" column="38" selection-start-line="49" selection-start-column="38" selection-end-line="49" selection-end-column="38" />
+            <state relative-caret-position="2240">
+              <caret line="112" column="19" selection-start-line="112" selection-start-column="19" selection-end-line="112" selection-end-column="19" />
               <folding>
                 <element signature="e#121#132#0" expanded="true" />
               </folding>
@@ -58,14 +47,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="proxy.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/executor/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="proxy.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/utils/proxy.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="14" column="19" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
-              <folding>
-                <marker date="1467855598251" expanded="true" signature="0:109" ph="..." />
-              </folding>
+            <state relative-caret-position="19">
+              <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -75,9 +72,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="399">
               <caret line="21" column="47" selection-start-line="21" selection-start-column="47" selection-end-line="21" selection-end-column="47" />
-              <folding>
-                <marker date="1467855598243" expanded="true" signature="0:112" ph="..." />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -112,10 +107,11 @@
       <list>
         <option value="$PROJECT_DIR$/config/globalconstants.py" />
         <option value="$PROJECT_DIR$/utils/general.py" />
-        <option value="$PROJECT_DIR$/freeproxy/autoproxy.py" />
         <option value="$PROJECT_DIR$/utils/proxy.py" />
         <option value="$PROJECT_DIR$/config/globalconf.py" />
         <option value="$PROJECT_DIR$/spider.py" />
+        <option value="$PROJECT_DIR$/freeproxy/autoproxy.py" />
+        <option value="$PROJECT_DIR$/executor/http_pool.py" />
       </list>
     </option>
   </component>
@@ -150,7 +146,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -208,12 +203,27 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="executor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jiandan-spider" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jiandan-spider" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="config" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -458,20 +468,59 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/spider.py">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3116">
+          <caret line="178" column="0" selection-start-line="178" selection-start-column="0" selection-end-line="178" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/freeproxy/autoproxy.py">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1467855598249" expanded="true" signature="0:112" ph="..." />
-            <marker date="1467855598249" expanded="false" signature="115:380" ph="import ..." />
-            <marker date="1467855598249" expanded="true" signature="1198:1543" ph="..." />
-            <marker date="1467855598249" expanded="true" signature="1203:1371" ph="&quot;&quot;&quot;construct scrapy source urls...&quot;&quot;&quot;" />
-            <marker date="1467855598249" expanded="true" signature="1570:1916" ph="..." />
-            <marker date="1467855598249" expanded="true" signature="1575:1683" ph="&quot;&quot;&quot;get image url from the page source...&quot;&quot;&quot;" />
-            <marker date="1467855598249" expanded="true" signature="1941:2262" ph="..." />
-            <marker date="1467855598249" expanded="true" signature="1946:2058" ph="&quot;&quot;&quot;scrapy the image url from the page source...&quot;&quot;&quot;" />
-            <marker date="1467855598249" expanded="true" signature="2290:3221" ph="..." />
-            <marker date="1467855598249" expanded="true" signature="2295:2392" ph="&quot;&quot;&quot;download the image from given urls...&quot;&quot;&quot;" />
+            <element signature="e#121#132#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/proxy.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="14" column="19" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/globalconf.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="21" column="47" selection-start-line="21" selection-start-column="47" selection-end-line="21" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/general.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="22" column="40" selection-start-line="22" selection-start-column="40" selection-end-line="22" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/globalconstants.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="7" column="16" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spider.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -489,9 +538,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
           <caret line="9" column="19" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
-          <folding>
-            <marker date="1467855598251" expanded="true" signature="0:109" ph="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -499,9 +546,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
           <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding>
-            <marker date="1467855598243" expanded="true" signature="0:112" ph="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -525,18 +570,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
-          <folding>
-            <marker date="1467855598249" expanded="true" signature="0:112" ph="..." />
-            <marker date="1467855598249" expanded="false" signature="115:380" ph="import ..." />
-            <marker date="1467855598249" expanded="true" signature="1198:1543" ph="..." />
-            <marker date="1467855598249" expanded="true" signature="1203:1371" ph="&quot;&quot;&quot;construct scrapy source urls...&quot;&quot;&quot;" />
-            <marker date="1467855598249" expanded="true" signature="1570:1916" ph="..." />
-            <marker date="1467855598249" expanded="true" signature="1575:1683" ph="&quot;&quot;&quot;get image url from the page source...&quot;&quot;&quot;" />
-            <marker date="1467855598249" expanded="true" signature="1941:2262" ph="..." />
-            <marker date="1467855598249" expanded="true" signature="1946:2058" ph="&quot;&quot;&quot;scrapy the image url from the page source...&quot;&quot;&quot;" />
-            <marker date="1467855598249" expanded="true" signature="2290:3221" ph="..." />
-            <marker date="1467855598249" expanded="true" signature="2295:2392" ph="&quot;&quot;&quot;download the image from given urls...&quot;&quot;&quot;" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -554,9 +588,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="13" column="52" selection-start-line="13" selection-start-column="52" selection-end-line="13" selection-end-column="52" />
-          <folding>
-            <marker date="1467855598251" expanded="true" signature="0:109" ph="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -578,9 +610,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
-          <folding>
-            <marker date="1467855598243" expanded="true" signature="0:112" ph="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -613,16 +643,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/utils/proxy.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="14" column="19" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
-          <folding>
-            <marker date="1467855598251" expanded="true" signature="0:109" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/utils/general.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="418">
@@ -631,32 +651,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spider.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3116">
-          <caret line="178" column="0" selection-start-line="178" selection-start-column="0" selection-end-line="178" selection-end-column="0" />
-          <folding>
-            <marker date="1467855598249" expanded="true" signature="0:112" ph="..." />
-            <marker date="1467855598249" expanded="false" signature="115:380" ph="import ..." />
-            <marker date="1467855598249" expanded="true" signature="1198:1543" ph="..." />
-            <marker date="1467855598249" expanded="true" signature="1203:1371" ph="&quot;&quot;&quot;construct scrapy source urls...&quot;&quot;&quot;" />
-            <marker date="1467855598249" expanded="true" signature="1570:1916" ph="..." />
-            <marker date="1467855598249" expanded="true" signature="1575:1683" ph="&quot;&quot;&quot;get image url from the page source...&quot;&quot;&quot;" />
-            <marker date="1467855598249" expanded="true" signature="1941:2262" ph="..." />
-            <marker date="1467855598249" expanded="true" signature="1946:2058" ph="&quot;&quot;&quot;scrapy the image url from the page source...&quot;&quot;&quot;" />
-            <marker date="1467855598249" expanded="true" signature="2290:3221" ph="..." />
-            <marker date="1467855598249" expanded="true" signature="2295:2392" ph="&quot;&quot;&quot;download the image from given urls...&quot;&quot;&quot;" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/globalconf.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="399">
           <caret line="21" column="47" selection-start-line="21" selection-start-column="47" selection-end-line="21" selection-end-column="47" />
-          <folding>
-            <marker date="1467855598243" expanded="true" signature="0:112" ph="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -668,13 +667,47 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/executor/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/freeproxy/autoproxy.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-507">
-          <caret line="49" column="38" selection-start-line="49" selection-start-column="38" selection-end-line="49" selection-end-column="38" />
+        <state relative-caret-position="2240">
+          <caret line="112" column="19" selection-start-line="112" selection-start-column="19" selection-end-line="112" selection-end-column="19" />
           <folding>
             <element signature="e#121#132#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spider.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1393">
+          <caret line="178" column="0" selection-start-line="178" selection-start-column="0" selection-end-line="178" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/executor/http_pool.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="652">
+          <caret line="70" column="25" selection-start-line="70" selection-start-column="25" selection-end-line="70" selection-end-column="25" />
+          <folding>
+            <element signature="e#114#127#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/proxy.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -125,7 +125,7 @@ def download_image(urls):
             return 1
         return 0
 
-    executor = HttpPool(conf.HTTP_CONCURRENT_LOAD, runner=_download)
+    executor = HttpPool(conf.HTTP_CONCURRENT_LOAD, _download)
     executor.add_tasks(urls)
     resp = executor.run()
     for val in resp:

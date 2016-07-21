@@ -31,7 +31,10 @@ python spider.py
 
 Before you run the script, you should setup the spider in the `config/globalconf.py` file:
 
-``` python2
+``` python
+
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
 HOME = os.environ['HOME']
 

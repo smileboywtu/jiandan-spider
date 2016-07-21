@@ -26,6 +26,7 @@ Support:
 Just run the spider.py
 
 ``` shell
+#!/bin/bash
 python spider.py
 ```
 
@@ -50,9 +51,24 @@ PAGE_DELTA = 10
 # set jiandan http concurrent load
 HTTP_CONCURRENT_LOAD = 1000 # no more than 1024
 
-# auto proxy
-AUTO_PROXY = False
+```
 
+There are some commandline arguments you can use to control the spider:
+
+``` shell
+#!/bin/bash
+usage: spider.py [-h] [-s START] [-d DELTA] [-p PROXY]
+
+set scrap page start number, page scrape number
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -s START, --start START
+                        Scrape start page, the minimux number is 0.
+  -d DELTA, --delta DELTA
+                        Scrape page numbers, the minimux number is 1.
+  -p PROXY, --proxy PROXY
+                        Enable auto-proxy.
 ```
 
 # Lisence

@@ -7,7 +7,10 @@
 
 import os
 
-HOME = os.environ['HOME']
+try:
+    HOME = os.environ['HOME']
+except KeyError:
+    HOME = os.environ['HOMEDRIVE']
 
 # set the image save directory
 IMAGE_FILE_DIR = os.path.join(HOME, 'images')
@@ -20,6 +23,3 @@ PAGE_DELTA = 10
 
 # set jiandan http concurrent load
 HTTP_CONCURRENT_LOAD = 1000 # no more than 1024
-
-# auto proxy
-AUTO_PROXY = False

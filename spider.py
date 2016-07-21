@@ -145,6 +145,7 @@ def command_line():
     parser = argparse.ArgumentParser(description='set scrap page start number, page scrape number')
     parser.add_argument('-s', '--start', help='Scrape start page, the minimux number is 0.')
     parser.add_argument('-d', '--delta', help='Scrape page numbers, the minimux number is 1.')
+    parser.add_argument('-p', '--proxy', default=False, help='Enable auto-proxy.')
     args = parser.parse_args()
     return args
 
@@ -159,7 +160,7 @@ def main():
     start = args.start or conf.START_PAGE
     delta = args.delta or conf.PAGE_DELTA
 
-    if conf.AUTO_PROXY:
+    if args.proxy:
         setup_proxy()
         print 'setup proxy ok...'
     urls = generate_url(constants.URL_TEMPLATE, (start, delta))
